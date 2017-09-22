@@ -16,11 +16,10 @@ cleanUp() {
 trap cleanUp exit
 
 loggedInUserPid=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; username = SCDynamicStoreCopyConsoleUser(None, None, None)[1]; print(username);')
+
 launchctlCmd=$(python -c 'import platform; from distutils.version import StrictVersion as SV; print("asuser") if SV(platform.mac_ver()[0]) >= SV("10.10") else "bsexec"')
 
 packageDownloadUrl="https://nomad.menu/download/NoMAD.pkg"
-
-pkgExpectedSize=$(/usr/bin/curl $packageDownloadUrl -ILs | /usr/bin/tr -d '\r' | /usr/bin/awk '/Content-Length:/ {print $2}')
 
 log "Downloading NoMAD.pkg..."
 /usr/bin/curl -s $packageDownloadUrl -o "$tempDir/NoMAD.pkg"
@@ -28,10 +27,9 @@ if [ $? -ne 0 ]; then
     log "curl error: The package did not successfully download"; exit 1
 fi
 
-pkgDownloadedSize=$(/usr/bin/cksum "$tempDir/NoMAD.pkg" | /usr/bin/awk '{print $2}')
-log "Expected size: $pkgExpectedSize; Downloaded size: $pkgDownloadedSize"
-if [[ $pkgExpectedSize -ne $pkgDownloadedSize ]]; then
-    log "The package did not download properly"; exit 1
+pkgSignatureCheck=$(/usr/sbin/pkgutil --check-signature "$tempDir/NoMAD.pkg")
+if [ $? -ne 0 ]; then
+    log "pkgutil error: The downloaded package did not pass the signature check"; exit 1
 fi
 
 log "Installing NoMAD.app..."
