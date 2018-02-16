@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Please run this script as yourself. It can be run before the install script.
+
 #get username
 user=`stat -f "%Su" /dev/console`
 
