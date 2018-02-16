@@ -20,3 +20,7 @@ The latest version of the NoMAD package will be downloaded, installed and then a
 ## Configuration and Management
 
 Learn more about managing NoMAD at [https://nomad.menu/help-center/](https://nomad.menu/help-center/).
+
+`SkynetHealthcareMac.mobileconfig` can be used to easily configure settings by clicking on file.
+
+Settings can also be set using `NoMAD-settings.sh` script.
