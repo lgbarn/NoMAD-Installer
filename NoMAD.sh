@@ -22,24 +22,25 @@ launchctlCmd=$(python -c 'import platform; from distutils.version import StrictV
 packageDownloadUrl="https://nomad.menu/download/NoMAD.pkg"
 
 log "Downloading NoMAD.pkg..."
-/usr/bin/curl -s $packageDownloadUrl -o "$tempDir/NoMAD.pkg"
-if [ $? -ne 0 ]; then
+if ! /usr/bin/curl -s $packageDownloadUrl -o "$tempDir/NoMAD.pkg"
+then
     log "curl error: The package did not successfully download"; exit 1
 fi
 
-pkgSignatureCheck=$(/usr/sbin/pkgutil --check-signature "$tempDir/NoMAD.pkg")
-if [ $? -ne 0 ]; then
+if ! pkgSignatureCheck=$(/usr/sbin/pkgutil --check-signature "$tempDir/NoMAD.pkg")
+then
     log "pkgutil error: The downloaded package did not pass the signature check"; exit 1
 fi
+echo "$pkgSignatureCheck"
 
 log "Installing NoMAD.app..."
-/usr/sbin/installer -pkg "$tempDir/NoMAD.pkg" -target /
-if [ $? -ne 0 ]; then
+if ! /usr/sbin/installer -pkg "$tempDir/NoMAD.pkg" -target /
+then
     log "installer error: The package did not successfully install"; exit 1
 fi
 
 log "Writing LaunchAgent..."
-read -d '' launchAgent <<"EOF"
+read -d '' -r launchAgent <<"EOF"
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -67,8 +68,8 @@ echo "$launchAgent" > /Library/LaunchAgents/com.trusourcelabs.NoMAD.plist
 /bin/chmod 644 /Library/LaunchAgents/com.trusourcelabs.NoMAD.plist
 
 log "Loading LaunchAgent..."
-/bin/launchctl "$launchctlCmd" "$loggedInUserPid" /bin/launchctl load /Library/LaunchAgents/com.trusourcelabs.NoMAD.plist
-if [ $? -ne 0 ]; then
+if ! /bin/launchctl "$launchctlCmd" "$loggedInUserPid" /bin/launchctl load /Library/LaunchAgents/com.trusourcelabs.NoMAD.plist
+then
     log "launchctl error: The LaunchAgent failed to load"; exit 1
 fi
 

@@ -8,7 +8,7 @@ This script can be run as a policy in Jamf Pro or run using another management s
 
 To run locally:
 
-```
+```bash
 ~$ NoMAD.sh
 ```
 
