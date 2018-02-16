@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadContent</key>
+			<dict>
+				<key>com.trusourcelabs.NoMAD</key>
+				<dict>
+					<key>Forced</key>
+					<array>
+						<dict>
+							<key>mcx_preference_settings</key>
+							<dict>
+								<key>ADDomain</key>
+								<string>ad.qtrsystems.net</string>
+								<key>GetHelpOptions</key>
+								<string>mailto:helpdesk@skynethealthcare.com</string>
+								<key>GetHelpType</key>
+								<string>URL</string>
+								<key>HideGetSoftware</key>
+								<true/>
+								<key>HidePrefs</key>
+								<false/>
+								<key>HideQuit</key>
+								<true/>
+								<key>KerberosRealm</key>
+								<string>AD.QTRSYSTEMS.NET</string>
+								<key>LocalPasswordSync</key>
+								<true/>
+								<key>LocalPasswordSyncDontSyncLocalUsers</key>
+								<array>
+									<string>admin</string>
+									<string>support</string>
+								</array>
+								<key>MenuGetSoftware</key>
+								<string>Self Service</string>
+								<key>MenuHomeDirectory</key>
+								<string>Home Drive</string>
+								<key>MessagePasswordChangePolicy</key>
+								<string>Please ensure your password is not one you've used previously and is a minimum of 8 characters including at least 3 of the following: upper case letter, lower case letter, number or symbol. Your password may not contain your username or any other common words.</string>
+								<key>PersistExpiration</key>
+								<true/>
+								<key>ShowHome</key>
+								<true/>
+								<key>SignInWindowOnLaunch</key>
+								<true/>
+								<key>TitleSignIn</key>
+								<string>Please Enter Your Skynet Credentials</string>
+								<key>UPCAlert</key>
+								<true/>
+								<key>UseKeychain</key>
+								<true/>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>PayloadEnabled</key>
+			<true/>
+			<key>PayloadIdentifier</key>
+			<string>MCXToProfile.59a7e3bf-fad7-48bb-a10a-e38514486168.alacarte.customsettings.606e7ec8-2256-4045-809c-80414343ed84</string>
+			<key>PayloadType</key>
+			<string>com.apple.ManagedClient.preferences</string>
+			<key>PayloadUUID</key>
+			<string>606e7ec8-2256-4045-809c-80414343ed84</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Included custom settings:
+com.trusourcelabs.NoMAD
+
+Git revision: a0e04c60fc</string>
+	<key>PayloadDisplayName</key>
+	<string>MCXToProfile: com.trusourcelabs.NoMAD</string>
+	<key>PayloadIdentifier</key>
+	<string>SkynetHealthcareMac</string>
+	<key>PayloadOrganization</key>
+	<string></string>
+	<key>PayloadRemovalDisallowed</key>
+	<true/>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>59a7e3bf-fad7-48bb-a10a-e38514486168</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
